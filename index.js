@@ -13,7 +13,8 @@ exports.ghinbox = (req, res) => {
             't': 'event',
             'ec': 'repo',
             'ea': 'push',
-            'el': repository.full_name
+            'el': repository.full_name,
+            'cm1': 1,
         }
     }, (err, httpRes, body) => {
         if (err) {

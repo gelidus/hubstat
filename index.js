@@ -1,4 +1,19 @@
+const request = require('request');
+
+const trackingID = 'UA-34396002-3';
 
 exports.ghinbox = (req, res) => {
-    res.send(`Hello World`)
+    const { commits, repository, sender } = req.body;
+
+    request.post('http://www.google-analytics.com/collect', {
+        'v': '1',
+        'tid': trackingID,
+        'cid': sender.login,
+        't': 'event',
+        'ec': 'repo',
+        'ea': 'push',
+        'el': repository.full_name
+    });
+
+    res.status(200).send();
 };

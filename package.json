@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/gelidus/hubstat/issues"
   },
-  "homepage": "https://github.com/gelidus/hubstat#readme"
+  "homepage": "https://github.com/gelidus/hubstat#readme",
+  "dependencies": {
+    "googleapis": "^23.0.0",
+    "request": "^2.83.0"
+  }
 }

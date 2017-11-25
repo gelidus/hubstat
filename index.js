@@ -6,16 +6,18 @@ exports.ghinbox = (req, res) => {
     const { commits, repository, sender } = req.body;
 
     request.post('http://www.google-analytics.com/collect', {
-        'v': '1',
-        'tid': trackingID,
-        'cid': sender.login,
-        't': 'event',
-        'ec': 'repo',
-        'ea': 'push',
-        'el': repository.full_name
+        form: {
+            'v': '1',
+            'tid': trackingID,
+            'cid': sender.login,
+            't': 'event',
+            'ec': 'repo',
+            'ea': 'push',
+            'el': repository.full_name
+        }
     }, (err, httpRes, body) => {
         if (err) {
-            return res.status(500).send(httpRes.body);
+            return res.status(500).send(err);
         }
 
         res.status(200).send();

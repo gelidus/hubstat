@@ -13,7 +13,11 @@ exports.ghinbox = (req, res) => {
         'ec': 'repo',
         'ea': 'push',
         'el': repository.full_name
-    });
+    }, (err, res, body) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
 
-    res.status(200).send();
+        res.status(200).send();
+    });
 };
